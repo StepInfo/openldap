@@ -91,8 +91,9 @@ if (node['platform'] == "ubuntu")
     mode 00640
     owner "openldap"
     group "openldap"
-    notifies :stop, "service[slapd]", :immediately
-    notifies :run, "execute[slapd-config-convert]"
+    variables :acl => node.generate_openldap_acls_from_attributes
+    notifies :stop, resources(:service => "slapd"), :immediately
+    notifies :run, resources(:execute => "slapd-config-convert")
   end
 else
   case node['platform']
@@ -110,6 +111,7 @@ else
     mode 00640
     owner "openldap"
     group "openldap"
-    notifies :restart, "service[slapd]"
+    variables :acl => node.generate_openldap_acls_from_attributes
+    notifies :restart, resources(:service => "slapd")
   end
 end
