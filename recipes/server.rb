@@ -86,6 +86,13 @@ if (node['platform'] == "ubuntu")
     notifies :start, "service[slapd]", :immediately
   end
 
+  cookbook_file "#{node['openldap']['dir']}/schema/stepinfopersonandgroup.schema" do
+    source "stepinfopersonandgroup.schema"
+    mode 00644
+    owner "root"
+    group "root"
+  end
+
   template "#{node['openldap']['dir']}/slapd.conf" do
     source "slapd.conf.erb"
     mode 00640

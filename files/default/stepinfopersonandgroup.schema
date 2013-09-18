@@ -1,0 +1,147 @@
+attributetype ( 42.42.42.1
+	NAME 'mailRedirect1'
+	DESC 'Redirection email 1'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.2
+	NAME 'mailRedirect2'
+	DESC 'Redirection email 2'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.3
+	NAME 'mailStep'
+	DESC 'mailStep'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.4
+	NAME 'fonction'
+	DESC 'fonction'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+attributetype ( 42.42.42.5
+	NAME 'mailPerso'
+	DESC 'mailPerso'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+attributetype ( 42.42.42.6
+	NAME 'mailClient'
+	DESC 'mailClient'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.7
+	NAME 'commercial'
+	DESC 'commercial'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.8
+	NAME 'client'
+	DESC 'client'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.9
+	NAME 'poste'
+	DESC 'poste'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.10
+	NAME 'dateEntree'
+	DESC 'dateEntree'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+attributetype ( 42.42.42.11
+	NAME 'dateSortie'
+	DESC 'dateSortie'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.12
+	NAME 'telFixe'
+	DESC 'telFixe'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+attributetype ( 42.42.42.13
+	NAME 'telPortable'
+	DESC 'telPortable'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+attributetype ( 42.42.42.14
+	NAME 'telPro'
+	DESC 'telPro'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+
+attributetype ( 42.42.42.15
+	NAME 'accesExterne'
+	DESC 'accesExterne'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+attributetype ( 42.42.42.16
+	NAME 'observations'
+	DESC 'observations'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE )
+	
+objectclass	( 42.42.42
+    NAME 'StepInfoPerson'
+	DESC 'Personne StepInfo'
+    SUP inetOrgPerson
+    STRUCTURAL
+	MAY (
+		mailRedirect1 $ mailRedirect2 $ mailStep $ fonction $ mailPerso $ mailClient
+		$ commercial $ client $ poste $ dateEntree $ dateSortie
+		$ telFixe $ telPortable $ telPro $ accesExterne $ observations )
+	)
+	
+objectclass ( 1.3.6.1.4.1.98546.1.2.3
+	NAME 'StepInfoGroupOfNames'
+	DESC 'groupe stepinfo extension de RFC2256'
+	SUP top
+	STRUCTURAL
+	MUST cn
+	MAY ( member $ businessCategory $ seeAlso $ owner $ ou $ o $ description )
+	)
