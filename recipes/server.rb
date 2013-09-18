@@ -60,6 +60,13 @@ cookbook_file "#{node['openldap']['ssl_dir']}/#{node['openldap']['server']}.pem"
   group "root"
 end
 
+cookbook_file "#{node['openldap']['dir']}/schema/stepinfopersonandgroup.schema" do
+  source "stepinfopersonandgroup.schema"
+  mode 00644
+  owner "root"
+  group "root"
+end
+
 service "slapd" do
   action [:enable, :start]
 end
@@ -84,13 +91,6 @@ if (node['platform'] == "ubuntu")
     user "openldap"
     action :nothing
     notifies :start, "service[slapd]", :immediately
-  end
-
-  cookbook_file "#{node['openldap']['dir']}/schema/stepinfopersonandgroup.schema" do
-    source "stepinfopersonandgroup.schema"
-    mode 00644
-    owner "root"
-    group "root"
   end
 
   template "#{node['openldap']['dir']}/slapd.conf" do
